@@ -15,9 +15,8 @@ let difficulty = "hard";
 let highScore = 0;
 
 // adding sound to my game for creativity :)
-
-const hitSound = new Audio('../../assets/hit.mp3');
-const gameSong = new Audio('assets/molesong.mp3');
+const hitSound = new Audio('../assets/hit.mp3');
+const gameSong = new Audio('../assets/molesong.mp3');
 
 /**
  * Generates a random integer within a range.
@@ -111,7 +110,7 @@ function toggleVisibility(hole){
 * return the timeoutId if the game continues or the string "game stopped"
 * if the game is over.
 *
-*/
+
 function gameOver() {
   // TODO: Write your code here
   if (time > 0) {
@@ -122,6 +121,19 @@ function gameOver() {
     return gameStopped;
   }
 }
+*/
+function gameOver() {
+  if (time > 0) {
+    return showUp();
+  } else {
+    clearInterval(timer);
+    gameSong.pause();
+    gameSong.currentTime = 0;
+    return "game stopped";
+  }
+}
+
+
 
 /**
 *
@@ -154,14 +166,20 @@ function showAndHide(hole, delay){
     // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
     toggleVisibility(hole);
     if(time > 0) {
-      gameOver();
+      return gameOver();
     }
 
   }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
   return timeoutID;
 }
 
-
+/*
+Added highscore functionality 
+Checks if the current score is higher than the high score. If it is, update the high score and display the new high score
+*/
+function updateHighScoreDisplay() {
+  document.querySelector("#high-score").textContent = "High Score: " + highScore;
+}
 
 /**
 *
@@ -169,18 +187,18 @@ function showAndHide(hole, delay){
 * Use the `points` global variable that is already defined and increment it by 1.
 * After the `points` variable is incremented proceed by updating the scoreboard
 * that you defined in the `index.html` file. To update the scoreboard you can use 
-* `score.textContent = points;`. Added highscore functionality -- see comments below
+* `score.textContent = points;`. 
 *
 */
 function updateScore() {
   // TODO: Write your code here
-  points += 1;
+  points++;
   score.textContent = points;
 
-  // checks if the current score is higher than the high score. If it is, update the high score and display the new high score
+  //Checks if the current score is higher than the high score. If it is, update the high score and display the new high score
   if (points > highScore) {
     highScore = points;
-    document.querySelector("#high-score").textContent = "High Score: " + highScore;
+    updateHighScoreDisplay();
   }
 
   return points;
@@ -208,11 +226,17 @@ function clearScore() {
 * the moles. A sound has been added when player hits mole
 *
 */
+// function whack(event) {
+//   // TODO: Write your code here.
+//   hitSound.play();
+//      updateScore()
+//   return points;
+// }
+
 function whack(event) {
-  // TODO: Write your code here.
   hitSound.play();
-     updateScore()
-  return points;
+  
+  return updateScore();
 }
 
 /**
@@ -239,7 +263,7 @@ function updateTimer() {
     time -= 1;
     timerDisplay.textContent = time;
   } else {
-    gameOver();
+    return gameOver();
   }
   return time;
 }
@@ -250,9 +274,10 @@ function updateTimer() {
 * Adds the 'click' event listeners to the moles. See the instructions
 * for an example on how to set event listeners using a for loop.
 */
+
 function setEventListeners(){
-  // TODO: Write your code here
   moles.forEach(mole => {
+    mole.removeEventListener('click', whack);
     mole.addEventListener('click', whack);
   });
 
@@ -289,15 +314,30 @@ function stopGame(){
 * is clicked. A song has been added for duration of active gameplay
 *
 */
-function startGame(){
-  clearScore();
-  setDuration(10);
+// function startGame(){
+//   setDuration(10);
+//   clearScore();
+  
+//   showUp();
+//   setEventListeners();
+//   startTimer();
+//   gameSong.play(); 
+  
+//   return "game started";
+// }
 
+function startGame(){
+  const gameStarted = "game started";
   showUp();
+  setDuration(10);
+  clearScore();
+  
   setEventListeners();
   startTimer();
-  gameSong.play(); 
-  return "game started";
+  if (gameSong.paused) {
+    gameSong.play();
+  }
+  return gameStarted;
 }
 
 startButton.addEventListener("click", startGame);
