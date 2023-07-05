@@ -35,6 +35,10 @@ h3 {
 #start {
     text-align: center;
     font-size: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 12px;
+
 }
 
 #timer{
