@@ -1,3 +1,5 @@
+
+
 html {
   background: url('../assets/forest.jpeg') no-repeat center center fixed;
   /* background: url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/background.png?raw=true') no-repeat center center fixed; */
@@ -47,10 +49,10 @@ h3 {
 
 .grid {
   width: 600px;
-  height: 400px;
+  height: 450px;
   display: flex;
   flex-wrap: wrap;
-  margin: 120 auto; /* added to adjust holes in new forest background */
+  margin: 125 auto; /* added to adjust holes in new forest background */
   cursor: url('../assets/mallet.png'), pointer;
   
 }
