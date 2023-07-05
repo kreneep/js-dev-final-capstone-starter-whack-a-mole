@@ -290,11 +290,13 @@ function stopGame(){
 *
 */
 function startGame(){
-  gameSong.play();
+  clearScore();
   setDuration(10);
+
   showUp();
   setEventListeners();
   startTimer();
+  gameSong.play(); 
   return "game started";
 }
 

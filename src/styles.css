@@ -51,7 +51,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   margin: 120 auto; /* added to adjust holes in new forest background */
-  cursor: url('../../assets/mallet.png'), pointer;
+  cursor: url('../assets/mallet.png'), pointer;
   
 }
 
