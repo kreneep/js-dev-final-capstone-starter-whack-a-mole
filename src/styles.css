@@ -1,6 +1,6 @@
 html {
-  /*background: url('./assets/background.png') no-repeat center center fixed;*/
-  background: url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/background.png?raw=true') no-repeat center center fixed;
+  background: url('../assets/forest.jpeg') no-repeat center center fixed;
+  /* background: url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/background.png?raw=true') no-repeat center center fixed; */
   box-sizing: border-box;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -13,16 +13,23 @@ html {
 h1 {
   text-align: center;
   font-size: 90px;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  color: white;
+  font-family: 'Times New Roman', Times, serif, cursive;
+  color: black;
   -webkit-text-stroke: 2px black;
 }
 
 h2 {
   text-align: center;
   font-size: 40px;
-  color: white;
-  -webkit-text-stroke: 1px black;
+  color: black;
+  -webkit-text-stroke: 1px rgb(4, 4, 4);
+}
+
+h3 {
+  text-align: center;
+  font-size: 45;
+  color: black;
+  -webkit-text-stroke: 1px white;
 }
 
 #start {
@@ -31,7 +38,7 @@ h2 {
 }
 
 #timer{
-    color: white;
+    color: black;
 }
 
 .grid {
@@ -39,14 +46,16 @@ h2 {
   height: 400px;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
-  /*cursor: url('./assets/mallet.png'), pointer;*/
+  margin: 120 auto; /* added to adjust holes in new forest background */
+  cursor: url('../../assets/mallet.png'), pointer;
+  
 }
 
 .hole {
   flex: 1 0 33.33%;
   overflow: hidden;
   position: relative;
+
 }
 
 .hole:after {
@@ -64,7 +73,7 @@ h2 {
 }
 
 .mole {
-  /*background:url('./assets/mole.png') bottom center no-repeat;*/
+  /* background:url('./assets/mole.png') bottom center no-repeat; */
   background:url('https://github.com/Thinkful-Ed/js-dev-final-capstone-starter/blob/main/assets/mole.png?raw=true') bottom center no-repeat;
   background-size: 40%;
   position: absolute;
